@@ -1,11 +1,12 @@
 from google.cloud import storage
 
-#Assuming that export command has been
-class lifecycle():
+
+# Assuming that export command has been already run
+
+class Lifecycle:
 
     def __init__(self):
         self.client = storage.Client()
-
 
     def update_bucket_lifecycle(self, event_to_be_performed, storage_class, bucket_name, bucket_object_filters):
         """
@@ -63,3 +64,18 @@ class lifecycle():
             return False
 
         return True
+
+    def get_lifecycle(self, bucket_name):
+        """
+        This function returns the lifecycle currently on the bucket
+        :param
+            bucket_name: (str) - The bucket that has to be accessed
+        :return:
+            A list of dictionaries containing the rules applied on the bucket
+        """
+        storage_client = storage.Client()
+        bucket = storage_client.get_bucket(bucket_name)
+        return list(bucket.lifecycle_rules)
+
+
+
