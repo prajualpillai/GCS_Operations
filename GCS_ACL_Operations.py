@@ -1,8 +1,6 @@
 from google.cloud import storage
 
 
-
-
 class ACLOperations:
 
     def __init__(self):
@@ -82,10 +80,8 @@ class ACLOperations:
             bucket = self.client.bucket(bucket_name)
             acl = bucket.acl
             for entry in acl:
-               print("{}: {}".format(entry["role"], entry["entity"]))
+                print("{}: {}".format(entry["role"], entry["entity"]))
             return True
         except Exception as err:
-            print("...exception... ",err)
+            print("...exception... ", err)
             return False
-
-

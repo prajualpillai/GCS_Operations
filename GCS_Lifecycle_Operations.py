@@ -76,6 +76,3 @@ class Lifecycle:
         storage_client = storage.Client()
         bucket = storage_client.get_bucket(bucket_name)
         return list(bucket.lifecycle_rules)
-
-
-
